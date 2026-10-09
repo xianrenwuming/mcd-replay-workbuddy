@@ -1,0 +1,69 @@
+{
+  "_说明": "本文件为完全虚构的合成示例数据，仅用于演示和测试，不对应任何真实账户、真实订单号或真实 Token。",
+  "meta": {
+    "title": "我的麦麦回顾（示例）",
+    "generated_at": "2026-10-09 20:00",
+    "is_sample": true,
+    "scope_note": "仅统计本次接口返回记录（本卡片为合成示例数据）",
+    "persona": "示例画像：你是「随心配爱好者」，近半数订单都绕不开一份双牛堡随心配，午后和傍晚是你的黄金点餐时间。"
+  },
+  "orders": [
+    {
+      "create_time": "2026-09-28 12:15:00",
+      "status": "订单已完成",
+      "channel": "到店",
+      "amount": 13.9,
+      "items": [
+        { "name": "示例随心配A", "quantity": 1 },
+        { "name": "示例中薯条", "quantity": 1 }
+      ]
+    },
+    {
+      "create_time": "2026-09-21 18:40:00",
+      "status": "订单已完成",
+      "channel": "外送",
+      "amount": 32.5,
+      "items": [
+        { "name": "示例鸡腿堡套餐", "quantity": 1 },
+        { "name": "示例中薯条", "quantity": 1 },
+        { "name": "示例可乐", "quantity": 1 }
+      ]
+    },
+    {
+      "create_time": "2026-09-14 10:20:00",
+      "status": "订单已完成",
+      "channel": "到店",
+      "amount": 9.9,
+      "items": [
+        { "name": "示例早餐两件套", "quantity": 1 }
+      ]
+    },
+    {
+      "create_time": "2026-09-07 15:05:00",
+      "status": "订单已完成",
+      "channel": "到店",
+      "amount": 13.9,
+      "items": [
+        { "name": "示例随心配A", "quantity": 1 },
+        { "name": "示例圆筒冰淇淋", "quantity": 1 }
+      ]
+    },
+    {
+      "create_time": "2026-08-30 21:30:00",
+      "status": "订单已取消",
+      "channel": "外送",
+      "amount": 0,
+      "items": []
+    },
+    {
+      "create_time": "2026-08-22 11:05:00",
+      "status": "订单已完成",
+      "channel": "到店",
+      "amount": 27.8,
+      "items": [
+        { "name": "示例随心配A", "quantity": 2 },
+        { "name": "示例小薯条", "quantity": 1 }
+      ]
+    }
+  ]
+}

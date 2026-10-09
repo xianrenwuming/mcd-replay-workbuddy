@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>我的麦麦回顾（示例） · 麦麦回忆局</title>
+<!--
+  麦麦回忆局（McD Replay）回顾卡模板
+  - 原创视觉设计，未使用麦当劳官方 Logo 或受限制素材
+  - 占位符 %%XXX%% 由 scripts/build_recap.py 填充，所有文本均已 HTML 转义
+-->
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+    background: #f3ede4;
+    display: flex; justify-content: center;
+    padding: 24px 12px;
+    color: #3d3126;
+  }
+  .card {
+    width: 100%; max-width: 420px;
+    background: linear-gradient(175deg, #fffaf1 0%, #fdf3e0 60%, #fbeed7 100%);
+    border-radius: 24px;
+    box-shadow: 0 12px 32px rgba(120, 84, 40, 0.18);
+    overflow: hidden;
+    position: relative;
+  }
+  .card-head {
+    padding: 28px 24px 18px;
+    background: linear-gradient(135deg, #e8b04b 0%, #d98e32 100%);
+    color: #fffdf7;
+    position: relative;
+  }
+  .card-head .brand {
+    font-size: 12px; letter-spacing: 2px; opacity: .85; margin-bottom: 6px;
+  }
+  .card-head h1 { font-size: 24px; font-weight: 700; }
+  .card-head .range { font-size: 13px; margin-top: 8px; opacity: .92; }
+  /* 原创装饰图形：简单的圆与弧线，不代表任何品牌标识 */
+  .deco {
+    position: absolute; right: -30px; top: -30px;
+    width: 130px; height: 130px; border-radius: 50%;
+    background: rgba(255,255,255,0.14);
+  }
+  .deco::after {
+    content: ""; position: absolute; left: 22px; top: 22px;
+    width: 86px; height: 86px; border-radius: 50%;
+    background: rgba(255,255,255,0.12);
+  }
+  .card-body { padding: 20px 24px 24px; }
+  .stat-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 18px;
+  }
+  .stat {
+    background: #fffdf8; border: 1px solid #f0e2c8; border-radius: 14px;
+    padding: 14px 12px; text-align: center;
+  }
+  .stat .num { font-size: 22px; font-weight: 700; color: #b96a1b; }
+  .stat .label { font-size: 12px; color: #8a7a63; margin-top: 4px; }
+  .section { margin-bottom: 18px; }
+  .section h2 {
+    font-size: 14px; color: #6d5b40; margin-bottom: 10px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .section h2::before {
+    content: ""; width: 8px; height: 8px; border-radius: 50%; background: #d98e32;
+  }
+  .row {
+    display: flex; align-items: center; gap: 8px;
+    padding: 6px 0; font-size: 13px;
+  }
+  .row-name { flex: 0 0 40%; color: #4a3f30; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .row-bar { flex: 1; height: 8px; background: #f1e6d2; border-radius: 4px; overflow: hidden; }
+  .row-fill { display: block; height: 100%; background: linear-gradient(90deg, #e8b04b, #d98e32); border-radius: 4px; }
+  .row-val { flex: 0 0 52px; text-align: right; color: #b96a1b; font-weight: 600; }
+  .empty { font-size: 13px; color: #a3937c; padding: 6px 0; }
+  .other-status { font-size: 12px; color: #8a7a63; padding-left: 18px; line-height: 1.8; }
+  .hint { font-size: 12px; color: #a3937c; margin-top: 6px; }
+  .persona {
+    background: #fffdf8; border: 1px dashed #e3cfa8; border-radius: 14px;
+    padding: 14px; font-size: 14px; line-height: 1.7; color: #4a3f30;
+  }
+  .persona-tag {
+    display: inline-block; background: #d98e32; color: #fff; font-size: 11px;
+    border-radius: 8px; padding: 2px 8px; margin-right: 8px;
+  }
+  .sample-badge {
+    position: absolute; left: 50%; top: 46%;
+    transform: translate(-50%, -50%) rotate(-18deg);
+    border: 3px solid rgba(200, 60, 40, 0.55); color: rgba(200, 60, 40, 0.6);
+    font-size: 22px; font-weight: 800; letter-spacing: 4px;
+    padding: 8px 18px; border-radius: 10px; pointer-events: none;
+    background: rgba(255,255,255,0.35); z-index: 5;
+  }
+  .scope-note {
+    background: #fdf0dd; border-left: 4px solid #d98e32;
+    font-size: 12px; color: #7a6748; padding: 8px 12px; border-radius: 0 8px 8px 0;
+    margin-bottom: 14px;
+  }
+  .card-foot {
+    border-top: 1px dashed #e3cfa8; padding: 14px 24px 18px;
+    font-size: 11px; color: #a3937c; line-height: 1.8;
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="sample-badge">示例数据 · 非真实账户</div>
+    <div class="card-head">
+      <div class="deco"></div>
+      <div class="brand">麦麦回忆局 · McD REPLAY</div>
+      <h1>我的麦麦回顾（示例）</h1>
+      <div class="range">统计区间：2026-08-22 至 2026-09-28</div>
+    </div>
+    <div class="card-body">
+      <div class="scope-note">※ 仅统计本次接口返回记录（本卡片为合成示例数据）</div>
+      <div class="stat-grid">
+        <div class="stat"><div class="num">5</div><div class="label">已完成订单（笔）</div></div>
+        <div class="stat"><div class="num">6</div><div class="label">本次返回记录（条）</div></div>
+        <div class="stat"><div class="num">¥98.00</div><div class="label">有效记录消费合计</div></div>
+        <div class="stat"><div class="num">¥19.60</div><div class="label">平均单笔</div></div>
+      </div>
+      
+      <div class="section">
+        <h2>常点餐品</h2>
+        <div class="row"><span class="row-name">示例随心配A</span><span class="row-bar"><span class="row-fill" style="width:100%"></span></span><span class="row-val">4 份</span></div>
+<div class="row"><span class="row-name">示例中薯条</span><span class="row-bar"><span class="row-fill" style="width:50%"></span></span><span class="row-val">2 份</span></div>
+<div class="row"><span class="row-name">示例鸡腿堡套餐</span><span class="row-bar"><span class="row-fill" style="width:25%"></span></span><span class="row-val">1 份</span></div>
+<div class="row"><span class="row-name">示例可乐</span><span class="row-bar"><span class="row-fill" style="width:25%"></span></span><span class="row-val">1 份</span></div>
+<div class="row"><span class="row-name">示例早餐两件套</span><span class="row-bar"><span class="row-fill" style="width:25%"></span></span><span class="row-val">1 份</span></div>
+      </div>
+      <div class="section">
+        <h2>点餐时段</h2>
+        <div class="row"><span class="row-name">早餐 05:00-10:29</span><span class="row-bar"><span class="row-fill" style="width:0%"></span></span><span class="row-val">0 单</span></div>
+<div class="row"><span class="row-name">午餐 10:30-13:59</span><span class="row-bar"><span class="row-fill" style="width:100%"></span></span><span class="row-val">2 单</span></div>
+<div class="row"><span class="row-name">下午茶 14:00-16:59</span><span class="row-bar"><span class="row-fill" style="width:50%"></span></span><span class="row-val">1 单</span></div>
+<div class="row"><span class="row-name">晚餐 17:00-20:59</span><span class="row-bar"><span class="row-fill" style="width:50%"></span></span><span class="row-val">1 单</span></div>
+<div class="row"><span class="row-name">夜宵 21:00-04:59</span><span class="row-bar"><span class="row-fill" style="width:0%"></span></span><span class="row-val">0 单</span></div>
+      </div>
+      <div class="section">
+        <h2>到店 / 外送</h2>
+        <div class="row"><span class="row-name">到店</span><span class="row-bar"><span class="row-fill" style="width:100%"></span></span><span class="row-val">4 单</span></div>
+<div class="row"><span class="row-name">外送</span><span class="row-bar"><span class="row-fill" style="width:25%"></span></span><span class="row-val">1 单</span></div>
+      </div>
+      <ul class="other-status"><li>订单已取消：1 笔（未计入消费统计）</li></ul>
+      <div class="persona"><span class="persona-tag">麦麦画像</span>示例画像：你是「随心配爱好者」，近半数订单都绕不开一份双牛堡随心配，午后和傍晚是你的黄金点餐时间。</div>
+    </div>
+    <div class="card-foot">
+      生成时间：2026-10-09 20:00<br>
+      个人数据回顾；数据来自用户授权的麦当劳 MCP 查询；仅供个人参考。<br>
+      麦麦回忆局为个人开源项目，非麦当劳官方产品。
+    </div>
+  </div>
+</body>
+</html>
